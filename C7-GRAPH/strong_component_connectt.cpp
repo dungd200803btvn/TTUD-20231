@@ -7,6 +7,7 @@ vector<int> low(N),num(N,-1);
 vector<bool> connect(N,false);
 stack<int>stk;
 int curNum=0;
+int res=0;
 void scc(int u){
 	stk.push(u);
 	connect[u] =true;
@@ -22,7 +23,8 @@ void scc(int u){
 		}
 	}
 	if(low[u]==num[u]){
-		cout <<"TPLTM: \n"<<endl;
+		res++;
+		cout <<"TPLTM: "<<endl;
 		while(true){
 			int v = stk.top();
 			stk.pop();
@@ -30,6 +32,7 @@ void scc(int u){
 			cout << v << " ";
 			if(v==u) break;
 		}
+		cout <<endl;
 	}
 }
 void input(){
@@ -41,10 +44,11 @@ void input(){
 	}
 }
 int main(){
-	freopen("data.txt","r",stdin);
+	freopen("tpltm.txt","r",stdin);
 	input();
 	for(int u=1;u<=n;u++){
 		if(num[u]==-1) scc(u);
 	}
+	cout <<res;
 	return 0;
 }
